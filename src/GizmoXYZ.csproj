@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><Version>0.6.11</Version><AssemblyName>GizmoXYZ</AssemblyName><RootNamespace>GizmoXYZ</RootNamespace><AssemblyTitle>Gizmo XYZ</AssemblyTitle><Product>Gizmo XYZ</Product></PropertyGroup>
+  <Import Project="$(CSII_TOOLPATH)\Mod.props" />
+  <Import Project="$(CSII_TOOLPATH)\Mod.targets" />
+  <PropertyGroup><UserDataPath>$(CSII_USERDATAPATH)</UserDataPath><UnityModProjectPath>$(CSII_UNITYMODPROJECTPATH)</UnityModProjectPath><ModPostProcessorPath>$(CSII_MODPOSTPROCESSORPATH)</ModPostProcessorPath><MSCORLIBPath>$(CSII_MSCORLIBPATH)</MSCORLIBPath><LocalModsPath>$(MSBuildProjectDirectory)\..\local</LocalModsPath></PropertyGroup>
+  <ItemGroup><PackageReference Include="Lib.Harmony" Version="2.3.3" PrivateAssets="all" />
+    <Reference Include="Game;Colossal.Core;Colossal.Logging;Colossal.IO.AssetDatabase;Colossal.Collections;Colossal.Mathematics;Colossal.Localization;Colossal.UI;Colossal.UI.Binding;UnityEngine.CoreModule;UnityEngine.AudioModule;Unity.InputSystem;Unity.Collections;Unity.Entities;Unity.Mathematics"><Private>false</Private></Reference>
+    <Content Include="$(UserProfile)\.nuget\packages\lib.harmony\2.3.3\lib\net48\0Harmony.dll"><Link>0Harmony.dll</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+    <Reference Update="System;System.Core;System.Data"><Private>false</Private></Reference>
+  </ItemGroup>
+  <Target Name="DeployWIP" AfterTargets="AfterBuild" Condition="'$(NeedBuild)'"><ItemGroup><PackageReference Include="Lib.Harmony" Version="2.3.3" PrivateAssets="all" /><FilesToDeploy Include="$(OutDir)\*.dll;$(OutDir)\*.pdb" /></ItemGroup><MakeDir Directories="$(DeployDir)" /><Copy SourceFiles="@(FilesToDeploy)" DestinationFolder="$(DeployDir)" /></Target>
+</Project>
+
+
+
+
+
+

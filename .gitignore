@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+**/node_modules/
+local/
+*.log
+*.pdb
+publishing/
+installation-backups/
+installation-receipt.json
+tests/localization-browser/
